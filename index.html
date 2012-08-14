@@ -1,8 +1,8 @@
-<!doctype html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <html>
 
     <head>
@@ -25,6 +25,11 @@
         <div id="wrapper">
 
             <!-- YOUR CONTENT GOES HERE -->
+            <div id="content">
+
+                                                        
+
+            </div>
 
         </div>
 
@@ -32,16 +37,34 @@
         <!-- Must not be changed or removed -->
         <div id="fb-root"></div>        
 
-        <!-- Include jQuery -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-
         <!-- Include FB SDK -->
-        <script src="https://connect.facebook.net/en_EN/all.js"></script>
+        <script src="https://connect.facebook.net/en_US/all.js"></script>        
 
         <!-- Include plugins and script -->        
-        <script src="js/plugins.js"></script>
-        <script src="js/script.js"></script>
+        <script>
+
+            // Called when FB SDK has been loaded
+            window.fbAsyncInit = function() {
+
+                // Initialize the FB javascript SDK
+                FB.init({
+
+                    appId   : '269633396481423', // APP ID muss durch ID der aktuellen Anwendung ersetzt werden
+                    channelUrl : 'https://fb.jm.is/fb-tab-template/index.html', // Channel File
+                    status  : true,
+                    cookie  : true,
+                    xfbml   : true
+
+                });
+
+                // Auto grows panel when app is higher than 800px.
+                // In the app settings, height needs to be set to height 800px fixed for this to work
+                FB.Canvas.setAutoGrow();
+
+            };
+
+        </script>
+
 
     </body>
 
