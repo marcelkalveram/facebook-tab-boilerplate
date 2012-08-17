@@ -1,3 +1,22 @@
+<?php 
+
+    require_once('facebook-sdk/facebook.php');
+    require_once('inc/config.php');
+
+    // create facebook object
+    $facebook = new Facebook(array(
+
+        'appId'     =>  APP_ID,
+        'secret'    =>  APP_SECRET,
+        'cookie'    =>  true
+
+    ));     
+
+    // get signed request
+    $signedRequest = $facebook->getSignedRequest();
+    $userIsFan = isset($signedRequest['page']['liked']) && $signedRequest['page']['liked'];
+
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#"> <![endif]-->
@@ -35,12 +54,8 @@
 
         <!-- FB Root serves as anchor for the FB javascript SDK -->
         <!-- Must not be changed or removed -->
-        <div id="fb-root"></div>        
+        <div id="fb-root"></div>
 
-        <!-- Include FB SDK -->
-        <script src="https://connect.facebook.net/en_US/all.js"></script>        
-
-        <!-- Include plugins and script -->        
         <script>
 
             // Called when FB SDK has been loaded
@@ -49,11 +64,10 @@
                 // Initialize the FB javascript SDK
                 FB.init({
 
-                    appId       : '', // Has to be replaced with your own APP ID
-                    channelUrl  : '', // Has to be filled with your own channel file
-                    status      : true,
-                    cookie      : true,
-                    xfbml       : true
+                    appId   : '<?php echo APP_ID; ?>', // APP ID muss durch ID der aktuellen Anwendung ersetzt werden
+                    status  : true,
+                    cookie  : true,
+                    xfbml   : true
 
                 });
 
@@ -62,6 +76,14 @@
                 FB.Canvas.setAutoGrow();
 
             };
+
+            // Load the SDK Asynchronously
+            (function (d) {
+                var js, id = 'facebook-jssdk'; if (d.getElementById(id)) { return; }
+                js = d.createElement('script'); js.id = id; js.async = true;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                d.getElementsByTagName('head')[0].appendChild(js);
+            } (document));        
 
         </script>
 
