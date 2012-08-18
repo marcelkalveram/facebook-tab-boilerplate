@@ -16,10 +16,13 @@
     $signedRequest = $facebook->getSignedRequest();
     $userIsFan = isset($signedRequest['page']['liked']) && $signedRequest['page']['liked'];
 
+    // language detection, check if user has locale set to German
+    $language_DE = $signed_request['user']['locale']['de_DE'];
+
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <html>
@@ -46,7 +49,47 @@
             <!-- YOUR CONTENT GOES HERE -->
             <div id="content">
 
-                                                        
+                <?php 
+
+                /* ---------------------------------------------*/
+                /* ------- CONTENT FOR GERMAN VISITORS -------- */
+                /* ---------------------------------------------*/
+
+                if ($language_DE) { ?>
+
+                    <!-- ********** THIS CAN BE VIEWED BY FANS ONLY ********** -->
+                    <?php if ($userIsFan) { ?>
+
+                        <p>Benutzer ist ein Fan</p>
+
+                    <!-- ********** THIS CAN BE VIEWED BY NON-FANS ONLY ********** -->
+                    <?php } else { ?>
+
+                        <p>Benutzer ist kein Fan</p>
+
+                    <?php }
+
+                } 
+
+                /* ---------------------------------------------*/
+                /* ------- CONTENT FOR ENGLISH VISITORS ------- */
+                /* ---------------------------------------------*/
+
+                else { ?>
+
+                    <!-- ********** THIS CAN BE VIEWED BY FANS ONLY ********** -->
+                    <?php if ($userIsFan) { ?>
+
+                        <p>User is a fan/p>
+
+                    <!-- ********** THIS CAN BE VIEWED BY FANS ONLY ********** -->
+                    <?php } else { ?>
+
+                        <p>User is not a fan</p>
+
+                    <?php } ?>
+
+                <?php } ?>
 
             </div>
 
@@ -64,7 +107,7 @@
                 // Initialize the FB javascript SDK
                 FB.init({
 
-                    appId   : '<?php echo APP_ID; ?>', // APP ID muss durch ID der aktuellen Anwendung ersetzt werden
+                    appId   : '<?php echo APP_ID; ?>',
                     status  : true,
                     cookie  : true,
                     xfbml   : true
@@ -73,7 +116,7 @@
 
                 // Auto grows panel when app is higher than 800px.
                 // In the app settings, height needs to be set to height 800px fixed for this to work
-                FB.Canvas.setAutoGrow();
+                //FB.Canvas.setAutoGrow();
                 FB.Canvas.setSize({ width: 810, height: 1417 });
 
             };
