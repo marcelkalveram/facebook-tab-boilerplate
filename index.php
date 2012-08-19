@@ -8,7 +8,9 @@
 
         'appId'     =>  APP_ID,
         'secret'    =>  APP_SECRET,
-        'cookie'    =>  true
+        'cookie'    =>  true,
+        'xfbml'     =>  true,
+        'oauth'     =>  true
 
     ));     
 
@@ -17,9 +19,7 @@
     $userIsFan = isset($signedRequest['page']['liked']) && $signedRequest['page']['liked'];
 
     // language detection, check if user has locale set to German
-    $language_DE = $signed_request['user']['locale']['de_DE'];
-
-    var_dump($signed_request);    
+    $language_DE = $signedRequest['user']['locale']['de_DE'];
 
 ?>
 <!DOCTYPE html>
