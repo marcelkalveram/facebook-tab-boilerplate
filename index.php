@@ -19,6 +19,8 @@
     // language detection, check if user has locale set to German
     $language_DE = $signed_request['user']['locale']['de_DE'];
 
+    var_dump($signed_request);    
+
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
