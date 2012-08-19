@@ -12,19 +12,21 @@ Your server should be equipped with an SSL certificate, since most of the users 
 
 Basic Facebook setup
 --------------
-Simply set up a new application at developers.facebook.com, and point the following values to your webserver directory,
-where your application resides:
-
-**Basic configuration**
+Simply set up a new application at http:s//developers.facebook.com, go to `Edit App`, then `Basic` > `Settings`.
+Under `Select how your app integrates with Facebook`, point the following values to where your application is located:
 
 - Canvas URL
 - Secure Canvas URL
 - Page Tab URL
 - Secure Pag Tab URL
 
-The `address of your website` should be within the same domain as your application.
-Under `app domains` you should provide the domain name where your app is running, e.g.:
-yourdomain.com if your application can be accessed via https://yourdomain.com/myapplication
+Under `Basic Info`, 
+
+the `Site URL` should be within the same domain as your application.
+
+The `App Domains` should represent the domain name where your app is running, e.g.:
+yourdomain.com if your application can be accessed via https://yourdomain.com/myapplication,
+or localhost if you are running your app on a local web server like MAMP.
 
 **Auth dialog**
 
