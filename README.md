@@ -55,7 +55,7 @@ Just download this repository, and insert your content in the designated content
 In the `inc/config.php`, insert your APP ID and APP SECRET.
 The Facebook SDK will require these values to make API calls on behalf of your application.
 
-In line 17, we detect if the user is a fan of the page where the iFrame put into.
+In line 17, we detect if the user is a fan of the page that the iFrame is loaded into.
 
 In line 20, you can choose to detect if the user has a particular locale, such as `de_DE` for Germany.
 
