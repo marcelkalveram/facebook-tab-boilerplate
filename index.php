@@ -116,8 +116,9 @@
 
                 // Auto grows panel when app is higher than 800px.
                 // In the app settings, height needs to be set to height 800px fixed for this to work
-                //FB.Canvas.setAutoGrow();
+
                 FB.Canvas.setSize({ width: 810, height: 1417 });
+                //FB.Canvas.setAutoGrow();                
 
             };
 

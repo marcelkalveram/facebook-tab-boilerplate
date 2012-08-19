@@ -1,7 +1,7 @@
-facebook-tab-template
+Facebook Tab Boilerplate
 =====================
 
-A basic HTML facebook tab boilerplate.
+A basic HTML/PHP facebook tab boilerplate.
 It includes fan page gating and a simple language switch.
 
 Requirements
@@ -50,9 +50,19 @@ After submission, the application will appear in a new tab of your fan page.
 
 Usage
 --------------
-Just download this repository, and insert your content in the designated content areas.
+Just download this repository, and insert your content in the designated content areas of index.php.
 
-In the inc/config.php, insert your APP ID and APP SECRET.
+In the `inc/config.php`, insert your APP ID and APP SECRET.
 The Facebook SDK will require these values to make API calls on behalf of your application.
 
-In line 17, we detect if the user is a fan of the page that the app is running in.
+In line 17, we detect if the user is a fan of the page where the iFrame put into.
+
+In line 20, you can choose to detect if the user has a particular locale, such as `de_DE` for Germany.
+
+In line 58, we distinguish between the German speaking users and international visitors to serve different content.
+
+In line 120, we set an initial width (810px by default) and height for the application.
+If your height should be dynamic and the iFrame adapt itself to the height of your content,
+you might want to uncomment the function call `FB.Canvas.setAutoGrow()` in line 121.
+
+However I haven't yet figured out why in Internet Explorer 7 this doesn't dynamically adjust the iFrame height.
