@@ -11,6 +11,22 @@
         'cookie'    =>  true
 
     ));     
+	
+    //Authenticate Integration
+    $login_url_params = array(
+	'redirect_uri' => TAB_URL
+    );
+
+    try {
+        $user_profile = $facebook->api('/me', 'GET');
+    } catch (FacebookApiException $e) {
+        // If the user is logged out, you can have a 
+        // user ID even though the access token is invalid.
+        // In this case, we'll get an exception, so we'll
+        // just ask the user to login again here.
+	echo 'Please authenticate to access: <a href="#" onclick="parent.window.location = \'' . $facebook->getLoginUrl($login_url_params) . '\';">Authentication & Retry</a>';
+        die;
+    }
 
     // get signed request
     $signedRequest = $facebook->getSignedRequest();
